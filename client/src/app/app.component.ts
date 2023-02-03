@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from './models/user';
+import { User } from './model/user';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +9,8 @@ import { User } from './models/user';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public title: string = 'The Dating app';
-  public users$!: Observable<User[]>;
+  title = 'The Dating app';
+  users$!: Observable<User[]>;
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
     this.getUsers();
   }
 
-  private getUsers(): void {
-    this.users$ = this.http.get<User[]>('http://localhost:5236/api/users');
+  private getUsers() {
+    this.users$ = this.http.get<User[]>('https://localhost:7149/api/users/');
   }
 }
